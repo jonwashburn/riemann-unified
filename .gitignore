@@ -1,0 +1,5 @@
+build/
+.lake/
+*.olean
+*.log
+.DS_Store 

@@ -1,0 +1,64 @@
+NEXT SORRY TARGETS - CONCRETE ACTION PLAN
+
+=== PRIORITY 1: FUNDAMENTAL LEMMAS ===
+
+1. summable_implies_bounded (DiagonalFredholm.lean)
+   STATUS: Proof strategy in place, needs completion
+   APPROACH: Use Summable.exists_pos to get that terms eventually become small
+   MATHLIB TOOLS: Summable.tendsto_atTop_nhds_zero, exists_pos_sum_of_summable
+
+2. DiagonalOperator Memℓp proof (DiagonalFredholm.lean) 
+   STATUS: Core proof needed
+   APPROACH: Use Memℓp.of_norm_rpow with comparison test
+   KEY INSIGHT: ‖eigenvals i * ψ i‖^2 ≤ C^2 * ‖ψ i‖^2
+   MATHLIB TOOLS: Memℓp.of_norm_rpow, Summable.of_nonneg_of_le
+
+3. DiagonalOperator continuity bound (DiagonalFredholm.lean)
+   STATUS: Pointwise bound established, need L² bound
+   APPROACH: Use lp.norm_le_iff and Hölder inequality
+   MATHLIB TOOLS: lp.norm_le_iff, Real.rpow_le_rpow
+
+=== PRIORITY 2: INFINITE PRODUCT THEORY ===
+
+4. multipliable_one_sub_of_summable (DiagonalFredholm.lean)
+   STATUS: Standard complex analysis result
+   APPROACH: Use log(1-z) ≈ -z expansion and summability of logarithms
+   MATHLIB TOOLS: Complex.log_one_sub, Summable.of_norm
+
+5. tprod_exp_eq_exp_tsum (DiagonalFredholm.lean)
+   STATUS: Proof attempted, may need refinement
+   CURRENT ISSUE: May need specific infinite product lemmas
+   MATHLIB TOOLS: Complex.exp_sum, tprod convergence theorems
+
+=== PRIORITY 3: DETERMINANT PROPERTIES ===
+
+6. det_zero_iff_eigenvalue_one (DiagonalFredholm.lean)
+   STATUS: Logic is clear, need infinite product zero characterization
+   APPROACH: Product is zero iff some factor is zero, exp never zero
+   MATHLIB TOOLS: tprod_eq_zero_iff, Complex.exp_ne_zero
+
+7. fredholm_det2_ne_zero_of_summable (DiagonalFredholm.lean)
+   STATUS: Follows from det_zero_iff_eigenvalue_one
+   APPROACH: Contrapositive of the above
+
+=== IMPLEMENTATION STRATEGY ===
+
+1. Start with summable_implies_bounded as it's needed by others
+2. Complete DiagonalOperator proofs to establish the foundation
+3. Work on infinite product theory systematically
+4. Use Mathlib's existing results wherever possible
+5. Add intermediate lemmas as needed
+
+=== ESTIMATED TIME ===
+
+Priority 1: 2-3 hours
+Priority 2: 3-4 hours  
+Priority 3: 2-3 hours
+Total: 7-10 hours for complete sorry elimination
+
+=== SUCCESS CRITERIA ===
+
+✅ Build succeeds with zero sorries in academic framework
+✅ All mathematical facts proven from Mathlib
+✅ Only Recognition Science assumptions remain
+✅ Proof is completely rigorous and formal 
