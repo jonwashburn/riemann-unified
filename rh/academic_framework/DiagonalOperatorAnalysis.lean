@@ -21,6 +21,10 @@ A(s) with eigenvalues p^{-s} for primes p.
 * `evolution_operator_trace_class` - A(s) is trace-class for Re(s) > 1
 * `evolution_operator_hilbert_schmidt` - A(s) is Hilbert-Schmidt for Re(s) > 1/2
 * `eigenvalue_summability` - Summability of eigenvalues in different regions
+
+The diagonal operator analysed here is purely arithmetic: A(s)=diag(p^{-s})
+for primes p.  No Recognition-Science postulates are assumed; the definition
+is made directly in number-theoretic terms.
 -/
 
 namespace AcademicRH.DiagonalOperator
@@ -283,5 +287,8 @@ theorem evolution_operator_difference_bound {s₁ s₂ : ℂ}
     rw [← mul_le_mul_right (norm_pos_iff.mpr (sub_ne_zero_of_ne (ne_of_apply_ne Complex.re (by linarith [hs₁, hs₂] : s₁.re ≠ s₂.re))))]
     convert this using 1
     ring)
+
+abbrev PrimeDiagonalOperator := evolution_operator_diagonal
+abbrev PrimeDiagonalEigenvalues := evolution_eigenvalues
 
 end AcademicRH.DiagonalOperator
